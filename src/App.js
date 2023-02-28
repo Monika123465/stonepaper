@@ -1,0 +1,33 @@
+import React,{useState} from "react"
+import Header from "./Pages/Header"
+import Play from "./Pages/Play"
+import Game from "./Pages/Game"
+
+import {Routes,Route} from "react-router-dom"
+
+function App() {
+  const [myChoice,setMyChoice]=useState("")
+  const [score,setScore]=useState(0)
+  return (
+    <>
+    <div className="container">
+      <Header score={score}>
+        <Routes>
+          <Route exact path='/'>
+            <Play setMyChoice={setMyChoice}/>
+
+          </Route>
+          <Route  path='/game'>
+            <Game myChoice={myChoice} score={score} setScore={setScore}/>
+
+          </Route>
+
+        </Routes>
+      </Header>
+      
+    </div></>
+  );
+
+}
+
+export default App;
