@@ -1,0 +1,33 @@
+.game{
+    width: 70%;
+    margin: auto;
+    margin-top: 80px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height:600px;
+}
+.gamewinner{
+    display: flex;
+    margin-left:80px;
+    gap: 60px;
+    margin-top:40px;
+}
+.playerwin{
+    width: 40%;
+    margin: auto;
+}
+.button{
+    width:250px;
+    height: 50px;
+    border: 1px solid white;
+    display: block;
+    margin-left: 220px;
+    text-align: center;
+    margin-bottom:60px;
+    margin-top: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.text{
+    font-size: 35px;
+    margin-top: 40px;
+    margin-left: 30px;
+}

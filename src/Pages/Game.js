@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { paperImage, rockImage, scissorImage } from '../images'
+import './game.css'
 
 const Game = ({ score, myChoice, setScore }) => {
     const [house, setHouse] = useState("")
@@ -7,31 +9,44 @@ const Game = ({ score, myChoice, setScore }) => {
     const [counter, setCounter] = useState(3)
 
     const newHousePick = () => {
-        const choices = ['rock', 'paper', 'scissors']
+        const choices = ['paper', 'scissor', 'rock']
         setHouse(choices[Math.floor(Math.random() * 3)])
     }
+    const getMyChoice = () => {
+        if (myChoice === 'scissors') return scissorImage
+        if (myChoice == 'paper') return paperImage
+        if (myChoice === 'rock') return rockImage
+
+    }
+
+    const getOpponent = () => {
+        if (house === 'scissor') return scissorImage
+        if (house == 'paper') return paperImage
+        if (house === 'rock') return rockImage
+    }
+
     useEffect(() => {
         newHousePick()
     }, [])
 
     const Result = () => {
         if (myChoice === 'rock' && house === "scissors") {
-            setPlayerWin("win")
+            setPlayerWin("won")
             setScore(score + 1)
         } else if (myChoice === 'rock' && house === "paper") {
-            setPlayerWin('lose')
+            setPlayerWin('loose')
             setScore(score - 1)
         } else if (myChoice === "scissors" && house === "paper") {
-            setPlayerWin("win");
+            setPlayerWin("won");
             setScore(score + 1);
         } else if (myChoice === "scissors" && house === "rock") {
-            setPlayerWin("lose");
+            setPlayerWin("loose");
             setScore(score - 1);
         } else if (myChoice === "paper" && house === "rock") {
-            setPlayerWin("win");
+            setPlayerWin("won");
             setScore(score + 1);
         } else if (myChoice === "paper" && house === "scissors") {
-            setPlayerWin("lose");
+            setPlayerWin("loose");
             setScore(score - 1);
         } else {
             setPlayerWin("draw");
@@ -45,15 +60,41 @@ const Game = ({ score, myChoice, setScore }) => {
 
     return (
         <div className='game'>
-            my Choice:{myChoice} <br />
-            House choice:{house} <br />
+            <div className='gamewinner'>
+            
+            <div>
+            <p className='text'>you:</p>
+                 {
+                <img src={getMyChoice()}
+                    style={{
+                        width: "200px",
+                        height: "200px",
+                        marginTop:'30px'
+                    }}
 
-            Result:
-            {playerWin === "win" && <h2>You win</h2>}
-            {playerWin === "lose" && <h2>You loose</h2>}
-            {playerWin === "draw" && <h2>You Draw</h2>}
+                />
+            } </div>
+            <br />
+           
+           
+           <div> <p className='text'>Opponent:</p>  
+           
+            <img src={getOpponent()}
+                style={{
+                    width: "200px",
+                    height: "200px",
+                    marginTop:'30px'
+                }}
+            />
+            </div>
+            </div>
+            <br />
+            <div className='playerwin'>
+            {playerWin === "won" && <h2>You won</h2>}
+            {playerWin === "loose" && <h2>You loose</h2>}
+            {playerWin === "draw" && <h2>You Draw</h2>}</div>
 
-            <div><Link to='/' onClick={() => setHouse()}>Play Again</Link></div>
+            <div className='button'><Link to='/' onClick={() => setHouse()}>Play Again</Link></div>
         </div>
     )
 }

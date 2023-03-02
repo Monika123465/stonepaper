@@ -1,0 +1,23 @@
+.Header {
+    width: '80%';
+    /* border: 1px solid green; */
+    margin: auto;
+    height: 150px;
+    margin-top: 150px;
+    /* background-color: azure; */
+    font-size: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid white;
+
+}
+
+h1 {
+    width: 40%;
+    margin: auto;
+    /* border: 1px solid green; */
+    padding-top: 20px;
+    padding-left: 60px;
+    color: black;
+
+
+}
